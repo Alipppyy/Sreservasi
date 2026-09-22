@@ -1,66 +1,367 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛠️ SReservasi
+
+### Sistem Reservasi & Manajemen Teknisi Berbasis Web
+
+> **SReservasi** adalah aplikasi web untuk membantu mengelola proses reservasi, pengguna, dan teknisi secara lebih terstruktur, sederhana, dan efisien.
+
+---
+
+## ✨ Tentang Project
+
+**SReservasi** dibuat sebagai sistem manajemen reservasi berbasis web yang memanfaatkan framework **Laravel**.
+
+Aplikasi ini dirancang untuk membantu administrator dalam mengelola data dan aktivitas reservasi serta memudahkan pengelolaan pengguna berdasarkan hak akses.
+
+Project ini cocok digunakan sebagai **aplikasi administrasi, project sekolah, portfolio web development, maupun dasar pengembangan sistem reservasi yang lebih kompleks.**
+
+---
+
+## 🚀 Fitur
+
+* 🔐 **Authentication**
+
+  * Login pengguna
+  * Logout
+  * Manajemen akses pengguna
+
+* 👤 **Role Management**
+
+  * Admin
+  * Teknisi
+
+* 📋 **Manajemen Data**
+
+  * Pengelolaan data sistem
+  * Pengelolaan pengguna
+  * Pengelolaan teknisi
+
+* 📅 **Sistem Reservasi**
+
+  * Pengelolaan proses reservasi
+  * Pencatatan data reservasi
+  * Monitoring data
+
+* 🗄️ **Database Management**
+
+  * MySQL
+  * Migration & seeding Laravel
+  * Database SQL tersedia dalam repository
+
+* ⚡ **Modern Development**
+
+  * Laravel
+  * Vite
+  * Axios
+  * Laravel Sanctum
+
+---
+
+## 🧰 Tech Stack
+
+| Teknologi                  | Penggunaan     |
+| -------------------------- | -------------- |
+| 🐘 PHP 8.1+                | Backend        |
+| 🔥 Laravel 10              | Web Framework  |
+| 🗄️ MySQL                  | Database       |
+| ⚡ Vite                     | Asset Bundling |
+| 📡 Axios                   | HTTP Client    |
+| 🔑 Laravel Sanctum         | Authentication |
+| 🎨 HTML / CSS / JavaScript | Frontend       |
+
+Project menggunakan Laravel Framework `^10.10` dan PHP `^8.1`.
+
+---
+
+## 📁 Struktur Project
+
+```text
+Sreservasi/
+│
+├── app/                # Logic aplikasi
+├── bootstrap/          # Bootstrap Laravel
+├── config/             # Konfigurasi aplikasi
+├── database/           # Migration, factory & seeder
+├── public/             # Asset publik
+├── resources/          # View & asset frontend
+├── routes/             # Routing aplikasi
+├── storage/            # File & cache aplikasi
+├── tests/              # Automated tests
+│
+├── .env.example        # Contoh konfigurasi environment
+├── artisan              # Laravel CLI
+├── composer.json        # PHP dependencies
+├── package.json         # Frontend dependencies
+├── vite.config.js       # Konfigurasi Vite
+├── db.sql               # Database SQL
+└── README.md            # Dokumentasi project
+```
+
+Struktur repository saat ini memang menggunakan pola Laravel standar dengan folder `app`, `database`, `resources`, `routes`, `storage`, dan `tests`.
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/Alipppyy/Sreservasi.git
+```
+
+Masuk ke folder project:
+
+```bash
+cd Sreservasi
+```
+
+### 2. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 3. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 4. Setup Environment
+
+Copy file `.env.example` menjadi `.env`.
+
+```bash
+cp .env.example .env
+```
+
+Untuk Windows:
+
+```bash
+copy .env.example .env
+```
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Konfigurasi Database
+
+Buat database:
+
+```text
+sistem_reservasi
+```
+
+Kemudian sesuaikan konfigurasi database pada `.env`.
+
+Contoh:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sistem_reservasi
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Repository juga menyediakan file `db.sql` yang membuat database `sistem_reservasi`.
+
+### 7. Jalankan Database
+
+Jika menggunakan migration:
+
+```bash
+php artisan migrate
+```
+
+Atau import:
+
+```text
+db.sql
+```
+
+ke MySQL / phpMyAdmin.
+
+### 8. Jalankan Development Server
+
+Terminal pertama:
+
+```bash
+php artisan serve
+```
+
+Terminal kedua:
+
+```bash
+npm run dev
+```
+
+Kemudian buka:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## 🔐 Role Pengguna
+
+Sistem memiliki beberapa role pengguna:
+
+### 👑 Admin
+
+Admin memiliki akses untuk mengelola sistem dan data pengguna.
+
+### 🔧 Teknisi
+
+Teknisi digunakan sebagai pengguna yang menangani aktivitas yang berkaitan dengan pekerjaan teknis.
+
+Role tersebut tersimpan pada tabel `users` dengan pilihan `admin` dan `teknisi`.
+
+---
+
+## 🗃️ Database
+
+Database utama:
+
+```text
+sistem_reservasi
+```
+
+Struktur pengguna menggunakan tabel:
+
+```text
+users
+```
+
+dengan beberapa informasi seperti:
+
+* ID
+* Nama
+* Email
+* Password
+* Role
+* Timestamp
+
+Role yang tersedia:
+
+```text
+admin
+teknisi
+```
+
+---
+
+## 🖥️ Development
+
+Untuk menjalankan project dalam mode development:
+
+```bash
+php artisan serve
+```
+
+dan:
+
+```bash
+npm run dev
+```
+
+Untuk melakukan build asset production:
+
+```bash
+npm run build
+```
+
+Script frontend tersebut tersedia pada `package.json` project.
+
+---
+
+## 🔒 Security
+
+Beberapa hal yang perlu diperhatikan ketika menjalankan project:
+
+* Jangan upload file `.env` ke repository.
+* Gunakan password database yang aman.
+* Jangan membagikan `APP_KEY`.
+* Gunakan akun dengan hak akses sesuai kebutuhan.
+* Ganti credential default sebelum digunakan pada production.
+
+---
+
+## 📌 Roadmap
+
+Pengembangan selanjutnya dapat mencakup:
+
+* [ ] Dashboard statistik
+* [ ] Notifikasi reservasi
+* [ ] Filter & pencarian data
+* [ ] Export laporan PDF
+* [ ] Export laporan Excel
+* [ ] Riwayat reservasi
+* [ ] Manajemen jadwal teknisi
+* [ ] Responsive mobile interface
+* [ ] REST API
+* [ ] Role & permission yang lebih fleksibel
+
+---
+
+Struktur folder yang disarankan:
+
+```text
+screenshots/
+├── login.png
+├── dashboard.png
+└── reservasi.png
+```
+
+---
+
+## 🤝 Contributing
+
+Pull request dan improvement sangat terbuka.
+
+1. Fork repository
+2. Buat branch baru
+
+```bash
+git checkout -b feature/nama-fitur
+```
+
+3. Commit perubahan
+
+```bash
+git commit -m "feat: tambah fitur baru"
+```
+
+4. Push branch
+
+```bash
+git push origin feature/nama-fitur
+```
+
+5. Buat Pull Request
+
+---
+
+## 📄 License
+
+Project ini menggunakan lisensi **MIT**.
+
+---
+
+## 👨‍💻 Developer
+
+**Alipppyy**
+
+---
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  Made with ❤️ using Laravel
 </p>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p align="center">
+  ⭐ Jika project ini membantu, jangan lupa beri star!
+</p>
